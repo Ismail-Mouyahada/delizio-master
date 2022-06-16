@@ -10,4 +10,8 @@ class Step extends Model
     use HasFactory;
 
     protected $fillable = ['step_title','step_details'];
+    public function recette()
+        {
+            return $this->belongsTo(Recette::class, 'recette_id');
+        }
 }

@@ -19,7 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('categorie');
 
             // Forgein key  recipe<=>category
-            $table->foreignId('recette_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('recette_id')->constrained('recettes')->onUpdate('cascade')->onDelete('cascade');
 
             //  Faster HTTP requests
             $table->index('recette_id');

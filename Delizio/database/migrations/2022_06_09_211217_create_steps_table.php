@@ -18,8 +18,8 @@ class CreateStepsTable extends Migration
             $table->string('step_title');
             $table->text('step_details');
 
-            $table->foreignId('recette_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            
+            $table->foreignId('recette_id')->constrained('recettes')->onUpdate('cascade')->onDelete('cascade');
+
             $table->index('recette_id');
             $table->timestamps();
         });

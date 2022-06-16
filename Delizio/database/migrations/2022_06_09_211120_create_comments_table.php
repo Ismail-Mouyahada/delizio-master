@@ -17,8 +17,8 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->text('commentaire');
 
-            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('recette_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('recette_id')->constrained('recettes')->onUpdate('cascade')->onDelete('cascade');
 
             $table->index('user_id');
             $table->index('recette_id');

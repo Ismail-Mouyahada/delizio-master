@@ -18,9 +18,9 @@ class CreateIngredientsTable extends Migration
             $table->string('ingredient');
             $table->float('Quantite');
 
-            $table->foreignId('recette_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('recette_id')->constrained('recettes')->onUpdate('cascade')->onDelete('cascade');
             $table->index('recette_id');
-            
+
             $table->timestamps();
         });
     }

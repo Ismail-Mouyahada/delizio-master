@@ -26,18 +26,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-
-            // forgein keys
-
-            $table->foreignId('recette_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('comment_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('note_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-
-            // for faster HTTP requests
-
-            $table->index('recette_id');
-            $table->index('comment_id');
-            $table->index('note_id');
             $table->timestamps();
         });
     }

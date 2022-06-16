@@ -1,6 +1,11 @@
-@extends('layouts.app')
 
-@section('content')
+@extends('layouts.main')
+@section('title')
+    Details de la recettes
+@endSection
+
+@section('main')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

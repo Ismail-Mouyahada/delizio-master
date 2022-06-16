@@ -17,26 +17,28 @@ class CreateRecettesTable extends Migration
             $table->id();
             $table->string('main_image');
             $table->string('title');
+            $table->string('categorie');
             $table->text('summary');
+            $table->string('tag');
             $table->text('description');
+            $table->string('quantite');
+            $table->string('ingredient');
             $table->integer('likes')->default(0);
-            $table->integer('temps_cuisson');
-            $table->integer('temps_preparation');
-            $table->integer('temps_repos');
-            $table->integer('budget');
-            $table->string('defficulte');
+            $table->integer('temps_cuisson')->nullable()->default(0);
+            $table->integer('temps_preparation')->nullable()->default(0);
+            $table->integer('temps_repos')->nullable()->default(0);
+            $table->integer('calories')->nullable()->default(0);
+            $table->integer('gras')->nullable()->default(0);
+            $table->integer('cholesterole')->nullable()->default(0);
+            $table->integer('carbohydrates')->nullable()->default(0);
+            $table->integer('proteines')->nullable()->default(0);
+            $table->integer('budget')->nullable()->default(0);
+            $table->integer('difficulte')->nullable()->default(0);
             $table->string('video');
 
+            $table->foreignId('user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');
 
-            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('ingredient_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('ustencil_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('image_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
-            $table->index('user_id');
-            $table->index('ingredient_id');
-            $table->index('ustencil_id');
-            $table->index('image_id');
 
             $table->timestamps();
         });
