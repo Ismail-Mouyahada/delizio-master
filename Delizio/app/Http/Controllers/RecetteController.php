@@ -39,6 +39,33 @@ class RecetteController extends Controller
         return view('recipe.create');
     }
 
+
+      protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            
+             "main_image" => ['required', 'mimes:png,jpg,svg,jpeg', 'max:255', 'unique:users'],
+              "title" => ['required', 'string', 'max:255'],
+              "categorie" =>  ['required', 'string', 'max:255'],
+              "summary" => ['required', 'text'],
+              "tag" => ['required', 'string', 'max:40'],
+              "video" => ['required', 'string', 'max:255'], 
+              "ingredient" => ['required', 'text'],  
+              "quantite" =>['required', 'integer'],
+              "description" =>  ['required', 'text'],
+              "temps_repos" => ['required', 'integer'],  
+              "temps_preparation" => ['required', 'integer'], 
+              "temps_cuisson" => ['required', 'integer'], 
+              "calories" => ['required', 'integer'], 
+              "carbohydrates" => ['required', 'integer'],  
+              "gras" => ['required', 'integer'],  
+              "potreines" => ['required', 'integer'],  
+              "cholesterole" => ['required', 'integer'], 
+              "difficulte" => ['required', 'integer'],
+              "budget" => ['required', 'integer'], 
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -49,7 +76,7 @@ class RecetteController extends Controller
     {
  
         Recette::Create([
-            "main_image" => $request->main_image->store('recettes', 'public'),
+              "main_image" => $request->main_image->store('recettes', 'public'),
               "title" => $request->title,
               "categorie" =>  $request->categorie, 
               "summary" => $request->summary,

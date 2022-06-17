@@ -3,8 +3,7 @@
  
 
 @section('title')
-
-Landing Page
+Prise de contact
 @endSection
 
 @section('main')
@@ -17,22 +16,22 @@ Landing Page
                 <div class="col-lg-8 content">
                     <form method="POST">
                         <div class="form-group">
-                            <label>Name</label>
+                            <label>Nom</label>
                             <input type="text" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Email Address</label>
+                            <label>Adresse E-mail</label>
                             <input type="email" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Subject</label>
+                            <label>Subjet</label>
                             <input type="text" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Message</label>
-                            <textarea class="form-control" rows="4" required="required"></textarea>
+                            <textarea class="form-control" rows="4" required="required" placeholder="Saisissez votre message ici"></textarea>
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
+                        <button type="submit" class="btn">Envoyez un message</button>
                     </form>
                 </div>
             </div>

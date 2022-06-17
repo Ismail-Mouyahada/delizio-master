@@ -17,60 +17,60 @@ Landing Page
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Browse Recipes</h2>
+                    <h2>Filtrer les recettes</h2>
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Choose category</label>
+                                <label>Selectionner une catégorie</label>
                                 <select class="js-search-category form-control select2-hidden-accessible" name="category" data-placeholder="Choose Category" tabindex="-1" aria-hidden="true">
-                    <option value="1">All</option>
-                    <option value="2">Breakfast</option>
-                    <option value="3">Lunch</option>
-                    <option value="4">Beverages</option>
-                    <option value="5">Appetizers</option>
-                    <option value="6">Soups</option>
-                    <option value="7">Salads</option>
-                    <option value="8">Beef</option>
-                    <option value="9">Poultry</option>
-                    <option value="10">Pork</option>
-                    <option value="11">Seafood</option>
-                    <option value="12">Vegetarian</option>
-                    <option value="13">Vegetables</option>
+                    <option value="1">Tous</option>
+                    <option value="2">Petit-déjeuner</option>
+                    <option value="3">Déjeunner</option>
+                    <option value="4">Boisson</option>
+                    <option value="5">Entrées</option>
+                    <option value="6">Soupes</option>
+                    <option value="7">Saldes</option>
+                    <option value="8">Viande</option>
+                    <option value="9">Poulet</option>
+                    <option value="10">Jombon</option>
+                    <option value="11">Fruits de mer</option>
+                    <option value="12">Vegetarien</option>
+                    <option value="13">Légumes</option>
                     <option value="14">Desserts</option>
-                    <option value="15">Canning / Freezing</option>
-                    <option value="16">Breads</option>
-                    <option value="17">Holidays</option>
+                    <option value="15">Glasses</option>
+                    <option value="16">Pains</option>
+                    <option value="17">Repas des vacances</option>
                   </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 255px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-category-11-container"><span class="select2-selection__rendered" id="select2-category-11-container" title="All">All</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Select one or more ingredients that should be included in recipe</label>
+                                <label>Selectionner un ou plusieurs ingrédients </label>
                                 <select class="js-search-ingredients form-control select2-hidden-accessible" name="ingredients[]" multiple="" data-placeholder="Included Ingredients" tabindex="-1" aria-hidden="true">
-                    <option value="sugar">sugar</option>
-                    <option value="wheat-flour">wheat flour</option>
-                    <option value="baking-powder">baking powder</option>
-                    <option value="eggs">eggs</option><option value="salt">salt</option>
-                    <option value="brown-sugar">brown sugar</option>
-                    <option value="chicken-breast">chicken breast</option>
-                    <option value="garlic">garlic</option>
-                    <option value="milk">milk</option>
-                    <option value="oil">oil</option>
-                    <option value="sesame-oil">sesame oil</option>
-                    <option value="soy-sauce">soy sauce</option>
-                    <option value="butter">butter</option>
-                    <option value="carrots">carrots</option>
+                    <option value="sugar">sucre</option>
+                    <option value="wheat-flour">farine blanche</option>
+                    <option value="baking-powder">louvure de gâteau</option>
+                    <option value="eggs">oeufs</option><option value="salt">sel</option>
+                    <option value="brown-sugar">sucre de canne</option>
+                    <option value="chicken-breast">blanc de poulet</option>
+                    <option value="garlic">percillard</option>
+                    <option value="milk">lait</option>
+                    <option value="oil">huile</option>
+                    <option value="sesame-oil">huile de sesame</option>
+                    <option value="soy-sauce">sauce soja</option>
+                    <option value="butter">beurre</option>
+                    <option value="carrots">carrottes</option>
                     <option value="coconut-flakes">coconut flakes</option>
-                    <option value="honey">honey</option>
+                    <option value="honey">miel</option>
                     <option value="mung-bean-sprouts">mung bean sprouts</option>
                     <option value="noodles">noodles</option>
-                    <option value="onion">onion</option>
-                    <option value="potato-starch">potato starch</option>
-                    <option value="red-bell-pepper">red bell pepper</option>
+                    <option value="onion">ongion</option>
+                    <option value="potato-starch">épulchés de potato</option>
+                    <option value="red-bell-pepper">pigment rouge</option>
                     <option value="walnuts">walnuts</option>
-                    <option value="water">water</option>
-                    <option value="almonds">almonds</option>
-                    <option value="baking-soda">baking soda</option>
+                    <option value="water">eau</option>
+                    <option value="almonds">amandes</option>
+                    <option value="baking-soda">soda de cuisson</option>
                     <option value="beef-brisket">beef brisket</option>
                     <option value="beef-sirloin">beef sirloin</option>
                     <option value="bell-pepper">bell pepper</option>
@@ -112,17 +112,17 @@ Landing Page
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Recipe needs to have</label>
+                                <label>la recette devrait avoir</label>
                                 <select class="js-search-category2 form-control select2-hidden-accessible" name="category" data-placeholder="Choose Category" tabindex="-1" aria-hidden="true">
-                    <option value="1">All of selected ingredients </option>
-                    <option value="2">Any of selected ingredients</option>
+                    <option value="1">Tous les ingrédients selectionnées </option>
+                    <option value="2">Un ou plusieurs ingrédients selectionnées</option>
                   </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 255px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-category-zu-container"><span class="select2-selection__rendered" id="select2-category-zu-container" title="All of selected ingredients ">All of selected ingredients </span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="Search by Keyword">
-                                <button type="submit" class="btn">Search Recipes</button>
+                                <button type="submit" class="btn">Chercher des recettes</button>
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@ Landing Page
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h5><i class="fa fa-cutlery" aria-hidden="true"></i> All Recipes</h5>
+                    <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Toutes les recettes</h5>
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="box grid recipes">

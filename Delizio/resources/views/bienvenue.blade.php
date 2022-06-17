@@ -1,6 +1,6 @@
  @extends('layouts.main')
 @section('title')
-    Details de la recettes
+   Bienvenue
 @endSection
 
 @section('main')

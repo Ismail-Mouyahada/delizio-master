@@ -1,16 +1,20 @@
 
 @extends('layouts.main')
 @section('title')
-    Details de la recettes
+    Espace utilisateur
 @endSection
 
 @section('main')
 
-    <div class="container">
+    <div class="container-fluid   py-5">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header bg-warning">
+
+                <h4 class="text-center text-white">     {{ __('Tableau de bord') }} </h4>
+
+                </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -21,7 +25,7 @@
 
                          
 
-                        {{ __('You are logged in!') }}
+                        {{ __('vous êtes connectés!') }}
                     </div>
                 </div>
             </div>

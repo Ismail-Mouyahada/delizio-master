@@ -72,9 +72,28 @@
          @if (Route::has('login'))
              
                     @auth
-                    <li class="nav-item  ">
+                    <li class="nav-item d-flex  ">
+<img width="70" height="auto" class="img-fluid rounded-circle"
+                                    src="{{ Storage::url(Auth::user()->photo) }}">
+
+                                      <a id="nav-link" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                       </a>
+
+
                         <a class="nav-link" href="{{ url('/accueil') }}"><i class="fa fa-upload"
                                 aria-hidden="true"></i> Mon compte</a>
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                        {{ __('Déconnexion') }}
+                                    </a>
+
+                                    <form id="logout-form" class='d-none' action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                      
                     </li>
                         
                     @else
@@ -98,7 +117,7 @@
     </nav>
 
 
-    <main class="container-fluid"> 
+    <main class="container-fluid  h-60"> 
     @yield('main')
     </main>
 

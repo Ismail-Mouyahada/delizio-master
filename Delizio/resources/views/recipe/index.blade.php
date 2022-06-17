@@ -13,7 +13,7 @@ Landing Page
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Top Breakfast Recipes</h5>
+                    <h5><i class="fa fa-cutlery" aria-hidden="true"></i> les Tops recettes de petits-déjeunner </h5>
                     <div class="box clearfix">
                         <a href="recipe-detail.html"><img src="images/square-recipes1.jpg" alt=""></a>
                         <h3><a href="recipe-detail.html">Cinnamon Baked Doughnuts</a></h3>

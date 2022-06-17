@@ -3,8 +3,7 @@
  
 
 @section('title')
-
-Landing Page
+Recettes
 @endSection
 
 @section('main')

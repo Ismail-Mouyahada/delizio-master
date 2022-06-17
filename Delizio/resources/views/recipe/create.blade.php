@@ -3,7 +3,7 @@
 
 
 @section('title')
-    Landing Page
+    Soumession des recettes
 @endSection
 
 @section('main')
@@ -13,7 +13,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2>Submit Recipe</h2>
+                        <h2>Soumession de la recette</h2>
                     </div>
                 </div>
             </div>
