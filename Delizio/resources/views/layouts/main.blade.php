@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('liste')}}">Accueil</a>
+                        <a class="nav-link" href="{{ route('pageAccueil')}}">Accueil</a>
                     </li>
                      <li class="nav-item">
                         <a class="nav-link" href="{{ route('meuilleurs')}}">Top recettes</a>
@@ -50,7 +50,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{ route('liste')}}">listes des recettes</a>
-                            <a class="dropdown-item" href="{{ url('recette/details/1')}}">Catégories</a>
+                            <a class="dropdown-item" href="{{ url('recette/details/{id}')}}">Catégories</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

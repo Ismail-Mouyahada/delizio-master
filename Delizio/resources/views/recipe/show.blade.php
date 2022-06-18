@@ -11,40 +11,38 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12 text-center">
-                    <h4>Oct 30, 2018</h4>
-                    <h1>Roast Chicken With Lemon Gravy</h1>
-                    <div class="by"><i class="fa fa-user" aria-hidden="true"></i> Gerina Amy</div>
+                    <h4>{{$recette->created_at}}</h4>
+                    <h1>{{$recette->title}}</h1>
+                    <div class="by"><i class="fa fa-user" aria-hidden="true"></i>{{$recette->user_id}}</div>
                 </div>
                 <div class="col-lg-8">
 
 
-                    <img src="images/recipe1.jpg" alt="">
+                    <img src="{{Storage::url($recette->main_image)}}" alt="">
 
 
                     <div class="info">
                         <div class="row">
                             <div class="col-lg-4 col-sm-4">
-                                <p>Serves:</p>
-                                <p><strong><i class="fa fa-users" aria-hidden="true"></i> 4 people</strong></p>
+                                <p>Temps de repos:</p>
+                                <p><strong><i class="fa fa-users" aria-hidden="true"></i> {{$recette->temps_repos}}min</strong></p>
                             </div>
                             <div class="col-lg-4 col-sm-4">
-                                <p>Prep Time:</p>
-                                <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> 30 min</strong></p>
+                                <p>Temps de préparation:</p>
+                                <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> {{$recette->temps_preparation}}min</strong></p>
                             </div>
                             <div class="col-lg-4 col-sm-4">
-                                <p>Cooking:</p>
-                                <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> 1 Hour</strong></p>
+                                <p>Temps de cuisson:</p>
+                                <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> {{$recette->temps_cuisson}}min</strong></p>
                             </div>
                         </div>
                     </div>
 
 
-                    <p>Lorem ipsum dolor sit amet, usu eu vocibus laboramus appellantur, pro no natum ullum omittam. Mei vitae utinam complectitur eu. Te usu cibo vulputate. Id propriae adipisci pro. Legere nominati ut mel, natum libris at vix.</p>
+                    <p>{{$recette->summary}}</p>
 
                     <div class="tag">
-                        <a href="#">Chicken</a>
-                        <a href="#">Lemon</a>
-                        <a href="#">Sayur</a>
+                        <a href="#">{{$recette->tag}}</a>
                     </div>
 
                     <div class="ingredient-direction">
@@ -53,7 +51,7 @@
                                 <h3>Ingredients</h3>
                                 <ul class="ingredients">
                                     <li>
-                                        3 Slice Chicken
+                                        {{$recette->quantite .' x '. $recette->ingredient   }}
                                     </li>
                                     <li>
                                         2 cubes beef bouillon, crumbled
@@ -94,33 +92,60 @@
 
 
                     <div class="nutrition-facts clearfix">
-                        <h3>Nutrition Facts</h3>
+                        <h3>Valeur Nutritive</h3>
                         <div>
                             <p>Calories:</p>
-                            <p><strong>632 kcal</strong></p>
+                            <p><strong>{{$recette->calories}} kcal</strong></p>
                         </div>
                         <div>
                             <p>Carbohydrate:</p>
-                            <p><strong>37 g</strong></p>
+                            <p><strong>{{$recette->carbohydrates}} g</strong></p>
                         </div>
                         <div>
-                            <p>Fat:</p>
-                            <p><strong>92 g</strong></p>
+                            <p>Matière Gras:</p>
+                            <p><strong>{{$recette->gras}} g</strong></p>
                         </div>
                         <div>
-                            <p>Protein:</p>
-                            <p><strong>63 g</strong></p>
+                            <p>Proteines:</p>
+                            <p><strong>{{$recette->proteines}} g</strong></p>
                         </div>
                         <div>
-                            <p>Cholesterol:</p>
+                            <p>Cholésterole:</p>
                             <p><strong>0 mg</strong></p>
                         </div>
 
                     </div>
 
 
+                    <div class="nutrition-facts clearfix d-flex justify-content-center align-items-center">
+                        <h3> <i class="fa fa-money" ></i> Accessibilité</h3>
+                        <div>
+                            <p>Budget:</p>
+                            <p> <strong>{{$recette->budget}} €</strong></p>
+                        </div>
+                        <div>
+                            <p>Difficulté:</p>
+                            <p><strong>{{ $recette->difficulte }} </strong></p>
+                        </div>
+                    </div>
+
+
+                     <div class="nutrition-facts clearfix d-flex justify-content-center align-items-center bg-light">
+                        
+                        <div>
+                       
+                            <a class="btn btn-warning text-white"  href="#" download><i class="fa fa-download"></i> Télécharger</a>
+                        </div>
+                        <div>
+
+                            <button class="btn btn-warning text-white"><i class="fa fa-send"></i> Partager</button>
+ 
+                        </div>
+                    </div>
+
+
                     <div class="blog-comment">
-                        <h3>3 Comments</h3>
+                        <h3>3 Commentaires</h3>
                         <hr/>
                         <ul class="comments">
                             <li>
@@ -151,7 +176,7 @@
                             </li>
                         </ul>
                         <div class="reply">
-                            <h3>Leave a Reply</h3>
+                            <h3>Laissez une réponse</h3>
                             <form method="post" id="commentform" class="comment-form">
                                 <p class="comment-form-comment">
                                     <textarea class="form-control" id="comment" name="comment" cols="45" rows="5" aria-required="true"></textarea>
@@ -159,7 +184,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <p class="comment-form-author">
-                                            <label for="author">Name <span class="required">*</span></label>
+                                            <label for="author">Nom <span class="required">*</span></label>
                                             <input class="form-control" id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required="true" required="required">
                                         </p>
                                     </div>
@@ -171,7 +196,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <p class="comment-form-url">
-                                            <label for="url">Website</label>
+                                            <label for="url">Site internet</label>
                                             <input class="form-control" id="url" name="url" type="text" value="" size="30" maxlength="200">
                                         </p>
                                     </div>

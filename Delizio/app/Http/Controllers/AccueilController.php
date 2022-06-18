@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Recette;
 
-class IngredientController extends Controller
+
+class AccueilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,9 @@ class IngredientController extends Controller
      */
     public function index()
     {
-        //
+        $recettes = Recette::all();
+
+        return view('bienvenue',compact('recettes'));
     }
 
     /**
@@ -23,7 +27,7 @@ class IngredientController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -34,13 +38,7 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        Ingredient::create([
-
-            'ingredient'=>request()->ingredient,
-            'quantite'=>request()->quantite,
-
-
-        ]);
+        //
     }
 
     /**

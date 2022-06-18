@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Models;
-
+use Conner\Likeable\Likeable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Recette extends Model
 {
-    use HasFactory;
+    use HasFactory, Likeable;
 
     protected $fillable = ['main_image','tag','ingredient','quantite','description','categorie','title','summary','description','likes', 'temps_cuisson', 'temps_preparation', 'temps_repos','calories','gras','proteines','carbohydrates','cholesterole','budget','difficulte','video', 'images'];
     /**

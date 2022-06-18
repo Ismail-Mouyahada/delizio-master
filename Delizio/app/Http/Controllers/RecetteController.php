@@ -1,12 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Auth;
 use App\Models\Recette;
 use Illuminate\Http\Request;
 
 class RecetteController extends Controller
 {
+
+
+
+
+
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+    
     /**
      * Display a listing of the resource.
      *
@@ -40,11 +50,13 @@ class RecetteController extends Controller
     }
 
 
-      protected function validator(array $data)
+      protected function validator(Request $request)
     {
-        return Validator::make($data, [
-            
-             "main_image" => ['required', 'mimes:png,jpg,svg,jpeg', 'max:255', 'unique:users'],
+        return Validator::make($request()->all(), [
+
+
+
+              "main_image" => ['required', 'mimes:png,jpg,svg,jpeg,webp', 'max:255', 'unique:users'],
               "title" => ['required', 'string', 'max:255'],
               "categorie" =>  ['required', 'string', 'max:255'],
               "summary" => ['required', 'text'],
@@ -74,7 +86,8 @@ class RecetteController extends Controller
      */
     public function store(Request $request)
     {
- 
+
+       
         Recette::Create([
               "main_image" => $request->main_image->store('recettes', 'public'),
               "title" => $request->title,
@@ -93,8 +106,10 @@ class RecetteController extends Controller
               "gras" => $request->gras,  
               "potreines" => $request->potreines,  
               "cholesterole" =>  $request->cholesterole, 
-              "difficulte" => $request->difficultedifficulte, 
-              "budget" => $request->budget,  
+              "difficulte" => $request->difficulte, 
+              "budget" => $request->budget,
+              "user_id"=>auth()->user()->id,  
+              
 
          ]);
 
@@ -109,7 +124,10 @@ class RecetteController extends Controller
      */
     public function show($id)
     {
-        return view('recipe.show');
+
+          $recette = Recette::findOrFail($id);
+ 
+        return view('recipe.show',compact('recette'));
     }
 
     /**
@@ -143,6 +161,25 @@ class RecetteController extends Controller
      */
     public function destroy($id)
     {
-        //
+    
+    }
+
+
+     public function likeRecette($id)
+    {
+        $recette = Recette::find($id);
+        $recette->like();
+        $recette->save();
+
+        return redirect()->route('pageAccueil')->with('message','Vous avez liké la recette!');
+    }
+
+    public function unlikeRecette($id)
+    {
+        $recette = Recette::find($id);
+        $recette->unlike();
+        $recette->save();
+        
+        return redirect()->route('pageAccueil')->with('message','Vous avez disliké la recette!');
     }
 }

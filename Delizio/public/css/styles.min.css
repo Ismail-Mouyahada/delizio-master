@@ -6,6 +6,34 @@
         url(https://fonts.gstatic.com/s/varelaround/v10/w8gdH283Tvk__Lua32TysjIfp8uK.ttf)
             format("truetype");
 }
+
+img.image-small{
+
+  width: 100px !important;
+  height: 100px !important;  
+}
+img.image-medium {
+    height: 195.4px;
+    width: 100% !important;
+}
+.image-huge{
+
+  width: 100% !important;
+  height: auto !important;  
+}
+
+
+ 
+.table td, .table th {
+    padding: 0.75rem;
+    vertical-align: top;
+    text-align: center;
+    line-height: 4em;
+    font-family: comfortaa;
+}
+.img-fluid.rounded-circle {
+  border: 4px #ffc107 solid;
+}
 body {
     font-family: "Varela Round", sans-serif;
     letter-spacing: 0.5px;

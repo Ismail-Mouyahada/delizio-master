@@ -59,120 +59,110 @@
     <div class="top">
         <div class="container">
             <div class="row">
+
+       
                 <div class="col-lg-4">
-                    <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Top Breakfast Recipes</h5>
+                    <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Meuilleurs Petit-dejeunée</h5>
                     <div class="box clearfix">
                         <a href="recipe-detail.html"><img src="images/square-recipes1.jpg" alt=""></a>
                         <h3><a href="recipe-detail.html">Cinnamon Baked Doughnuts</a></h3>
                         <p>Lorem ipsum dolor sit amet, adipiscing elit...</p>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Top Lunch Recipes</h5>
+
+                 <div class="col-lg-4">
+                    <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Meuilleurs Repas Midi</h5>
                     <div class="box clearfix">
-                        <a href="recipe-detail.html"><img src="images/square-recipes2.jpg" alt=""></a>
-                        <h3><a href="recipe-detail.html">Fruit Mix With Lemon Gravy</a></h3>
+                        <a href="recipe-detail.html"><img src="images/square-recipes1.jpg" alt=""></a>
+                        <h3><a href="recipe-detail.html">Cinnamon Baked Doughnuts</a></h3>
                         <p>Lorem ipsum dolor sit amet, adipiscing elit...</p>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Top Dinner Recipes</h5>
+
+                 <div class="col-lg-4">
+                    <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Meuilleurs Cocktails</h5>
                     <div class="box clearfix">
-                        <a href="recipe-detail.html"><img src="images/square-recipes3.jpg" alt=""></a>
-                        <h3><a href="recipe-detail.html">Red Cilly Sauce Cheese</a></h3>
+                        <a href="recipe-detail.html"><img src="images/square-recipes1.jpg" alt=""></a>
+                        <h3><a href="recipe-detail.html">Cinnamon Baked Doughnuts</a></h3>
                         <p>Lorem ipsum dolor sit amet, adipiscing elit...</p>
                     </div>
                 </div>
+          
+ 
             </div>
         </div>
     </div>
     <!-- List Recipes -->
     <div class="list">
-        <div class="container">
+        <div class="container-fluid ">
             <div class="row">
                 <div class="col-lg-12">
-                    <h5><i class="fa fa-cutlery" aria-hidden="true"></i> List Recipes</h5>
+                    <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Liste des Reccettes</h5>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="box grid recipes">
-                        <div class="by"><i class="fa fa-user" aria-hidden="true"></i> Gerina Amy</div>
-                        <a href="recipe-detail.html"><img src="images/recipe2.jpg" alt=""></a>
-                        <h2><a href="recipe-detail.html">Milk fruit fresh with vegetables </a></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <div class="tag">
-                            <a href="#">Milk</a>
-                            <a href="#">Lemon</a>
-                            <a href="#">Sayur</a>
+                 @foreach ($recettes as $recette)
+      
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="box grid recipes">
+                            <div class="by"><i class="fa fa-user" aria-hidden="true"></i> Ismail Mouyahada   </div>
+                               @if (session()->has('message'))
+                                    <div class="px-4 py-4 text-success bg-dark rounded">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
+
+                            <a href="{{ url('recette/details/'.$recette->id) }}">
+                                <img class="image-medium"  src="{{ $recette->main_image}}" alt="recette-{{$recette->tag}}">
+                     {{--            <img class="image-medium"  src="{{Storage::url($recette->main_image)}}" alt="recette-{{$recette->tag}}"> --}}
+                            </a>
+
+                            <h2>
+                                <a href="{{ url('recette/details/'.$recette->id) }}">{{$recette->title}}</a>
+                            </h2>
+
+                            <p>{{$recette->summary}}</p>
+                            <div class="tag">
+                                <a href="#">{{$recette->tag}}</a>
+                            </div>
+
+                            
+
+                            <div class="py-2 placehoder d-flex justify-content-center">
+
+
+                                 <span class="fa fa-heart text-danger p-2"><strong>{{ $recette->likeCount }}</strong> </span>
+                                  
+
+
+                                                        <form action="{{ route('unlike.recette', $recette->id) }}" method="post">
+                                                            @csrf
+                                                            <button
+                                                                class="btn btn-danger text-white  ">
+                                                                <i class="fa fa-thumbs-down"></i>
+                                                            </button>
+                                                        </form>
+
+
+                                                         <form action="{{ route('like.recette', $recette->id) }}" method="post">
+                                                            @csrf
+                                                            <button
+                                                                class="btn btn-warning text-white bg-warning">
+                                                                <i class="fa fa-thumbs-up"></i>
+                                                            </button>
+                                                        </form>
+                                
+
+                               
+                            </div>
+                            <div class='wrapper'><a href="{{ url('recette/details/'.$recette->id) }}"> <span class="fa fa-eye text-white border-circle  rounded-4 bg-warning p-2"> voir la recette  </span> </a></div>
+                            </a> 
+
+                            
                         </div>
+
                     </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="box grid recipes">
-                        <div class="by"><i class="fa fa-user" aria-hidden="true"></i> Gerina Amy</div>
-                        <a href="recipe-detail.html"><img src="images/recipe3.jpg" alt=""></a>
-                        <h2><a href="recipe-detail.html">Pink Happy Pia Chocolate Sweet</a></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                        <div class="tag">
-                            <a href="#">Chocolate</a>
-                            <a href="#">Lemon</a>
-                            <a href="#">Sayur</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="box grid recipes">
-                        <div class="by"><i class="fa fa-user" aria-hidden="true"></i> Gerina Amy</div>
-                        <a href="recipe-detail.html"><img src="images/recipe4.jpg" alt=""></a>
-                        <h2><a href="recipe-detail.html">Tasty Muffin Sweet Tin Lunches</a></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                        <div class="tag">
-                            <a href="#">Muffin</a>
-                            <a href="#">Lemon</a>
-                            <a href="#">Sayur</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="box grid recipes">
-                        <div class="by"><i class="fa fa-user" aria-hidden="true"></i> Gerina Amy</div>
-                        <a href="recipe-detail.html"><img src="images/recipe5.jpg" alt=""></a>
-                        <h2><a href="recipe-detail.html">Chickpea Recipes to Make Your Heart Happy</a></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                        <div class="tag">
-                            <a href="#">Chicken</a>
-                            <a href="#">Lemon</a>
-                            <a href="#">Sayur</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="box grid recipes">
-                        <div class="by"><i class="fa fa-user" aria-hidden="true"></i> Gerina Amy</div>
-                        <a href="recipe-detail.html"><img src="images/recipe6.jpg" alt=""></a>
-                        <h2><a href="recipe-detail.html">Cornbread Topped Cast-Iron Skillet Chili</a></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                        <div class="tag">
-                            <a href="#">Corn</a>
-                            <a href="#">Lemon</a>
-                            <a href="#">Sayur</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="box grid recipes">
-                        <div class="by"><i class="fa fa-user" aria-hidden="true"></i> Gerina Amy</div>
-                        <a href="recipe-detail.html"><img src="images/recipe7.jpg" alt=""></a>
-                        <h2><a href="recipe-detail.html">Easy Vegan Weeknight Dinner Recipes</a></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                        <div class="tag">
-                            <a href="#">Vegan</a>
-                            <a href="#">Lemon</a>
-                            <a href="#">Sayur</a>
-                        </div>
-                    </div>
-                </div>
+                 @endforeach  
                 <div class="col-lg-12 text-center">
-                    <a href="#" class="btn btn-load">Load More</a>
+                    <a href="#" class="btn btn-load">Voir plus de recettes</a>
                 </div>
             </div>
         </div>
