@@ -98,17 +98,18 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Liste des Reccettes</h5>
+                                                   @if (session()->has('message'))
+                                    <div class="px-4 py-4 text-success bg-dark rounded">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
                 </div>
                  @foreach ($recettes as $recette)
       
                     <div class="col-lg-4 col-sm-6">
                         <div class="box grid recipes">
                             <div class="by"><i class="fa fa-user" aria-hidden="true"></i> Ismail Mouyahada   </div>
-                               @if (session()->has('message'))
-                                    <div class="px-4 py-4 text-success bg-dark rounded">
-                                        {{ session('message') }}
-                                    </div>
-                                @endif
+ 
 
                             <a href="{{ url('recette/details/'.$recette->id) }}">
                                 <img class="image-medium"  src="{{ $recette->main_image}}" alt="recette-{{$recette->tag}}">

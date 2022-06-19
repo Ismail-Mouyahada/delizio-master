@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Auth;
 use App\Models\Recette;
+use App\Models\ingredient;
 use Illuminate\Http\Request;
+use DB;
 
 class RecetteController extends Controller
 {
@@ -26,17 +28,35 @@ class RecetteController extends Controller
     {
         $Recettes = Recette::all();
 
-        return view('recipe.browse', compact('Recettes'));
-    }
-
-
-
-    public function top()
-    {
-        $Recettes = Recette::all();
-
         return view('recipe.categories', compact('Recettes'));
     }
+
+
+
+    public function categorie()
+    {       
+
+        $Recettes = Recette::all();
+        return view('recipe.categories',compact('Recettes'));
+    }
+
+
+    public function topRecettes(Request $request)
+    {
+
+     $Ingredient = ingredient::all();   
+     $Recettes = Recette::all();
+     $TopRecettes = DB::table('recettes')->where('title','LIKE','%'.$request->data."%")->get();
+
+     $TopRecettes = Recette::whereIn('title', [$request->data])->get();
+
+    
+
+        return view('recipe.categories', compact('TopRecettes', 'Recettes'));
+    }
+
+
+
 
 
     /**

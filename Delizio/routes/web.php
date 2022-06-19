@@ -18,33 +18,28 @@ use App\Http\Controllers\AccueilController;
 */
 
 Route::get('/', [AccueilController::class, 'index'])->name('pageAccueil');
-
 Auth::routes();
-
 Route::get('/accueil', [HomeController::class, 'index'])->name('accueil');
-Route::get('/recettes', [RecetteController::class, 'index'])->name('liste');
-
-Route::get('/recette/creer', [RecetteController::class, 'create'])->name('creer')->middleware('auth');
-Route::post('/recette/enregistrer', [RecetteController::class, 'store'])->name('enregistrer')->middleware('auth');
-
-Route::get('/recette/details/{id}', [RecetteController::class, 'show'])->name('visualiser/{id}');
-// Route::post('/recette/details/{id}', [RecetteController::class, 'show'])->name('visualiser');
-
-Route::get('/recette/modifier/{id}', [RecetteController::class, 'update'])->name('modifier');
-
-Route::get('/recette/supprimer/{id}', [RecetteController::class, 'destroy'])->name('supprimer');
-
-// 
-
 Route::get('/contact', [ContactController::class, 'index'])->name('contacter');
+ 
+Route::controller(RecetteController::class)->group(function () {
 
-// les meuilleurs recettes
+		// Get methods
 
-Route::get('/top/recettes', [RecetteController::class, 'top'])->name('meuilleurs');
+		Route::get('/recettes', 'index')->name('liste');
+		Route::get('/recette/creer', 'create')->name('creer')->middleware('auth');
+		Route::get('/recette/details/{id}', 'show')->name('visualiser/{id}');
+		Route::get('/recette/modifier/{id}', 'update')->name('modifier');
+		Route::get('/recette/supprimer/{id}', 'destroy')->name('supprimer');
+		Route::get('/categories/recettes', 'categorie')->name('recette.categories');
+		Route::get('/top/recettes', 'topRecettes')->name('filtrer');
 
+		// Post methods topRecettes
 
-// Recipes likes or dislikes
+		Route::post('/recette/enregistrer', 'store')->name('enregistrer')->middleware('auth');
+		Route::post('/like-recette/{id}','likeRecette')->name('like.recette');
+		Route::post('/unlike-recette/{id}','unlikeRecette')->name('unlike.recette');
 
-Route::post('/like-recette/{id}',[RecetteController::class,'likeRecette'])->name('like.recette');
-Route::post('/unlike-recette/{id}',[RecetteController::class,'unlikeRecette'])->name('unlike.recette');
+ });
 
+ 

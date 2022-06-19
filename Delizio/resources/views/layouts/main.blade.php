@@ -40,7 +40,7 @@
                         <a class="nav-link" href="{{ route('pageAccueil')}}">Accueil</a>
                     </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="{{ route('meuilleurs')}}">Top recettes</a>
+                        <a class="nav-link" href="{{ route('recette.categories')}}">Top recettes</a>
                     </li>
                   
                     <li class="nav-item dropdown">
