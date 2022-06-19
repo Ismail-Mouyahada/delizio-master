@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecetteController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AccueilController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,22 +26,26 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contacter');
  
 Route::controller(RecetteController::class)->group(function () {
 
-		// Get methods
-
 		Route::get('/recettes', 'index')->name('liste');
 		Route::get('/recette/creer', 'create')->name('creer')->middleware('auth');
-		Route::get('/recette/details/{id}', 'show')->name('visualiser/{id}');
-		Route::get('/recette/modifier/{id}', 'update')->name('modifier');
-		Route::get('/recette/supprimer/{id}', 'destroy')->name('supprimer');
-		Route::get('/categories/recettes', 'categorie')->name('recette.categories');
+		Route::get('/recette/details/{id}', 'show')->name('visualiser.{id}');
+		Route::get('/recette/modifier/{id}', 'edit')->name('modifier.{id}');
+		Route::put('/recette/update/{id}', 'update')->name('update.{id}');
+		Route::get('/recette/supprimer/{id}', 'destroy')->name('supprimer.{id}');
+		Route::get('/categories/top/recettes', 'categorie')->name('recette.categories');
 		Route::get('/top/recettes', 'topRecettes')->name('filtrer');
-
-		// Post methods topRecettes
-
 		Route::post('/recette/enregistrer', 'store')->name('enregistrer')->middleware('auth');
 		Route::post('/like-recette/{id}','likeRecette')->name('like.recette');
 		Route::post('/unlike-recette/{id}','unlikeRecette')->name('unlike.recette');
 
  });
 
+
+Route::group(['middleware' => ['admin']], function () {
+   Route::get('tableauDeBord/admin', [AdminController::class, 'adminView'])->name('admin.view');
+});
  
+Route::controller(MessageController::class)->group(function () {
+Route::post('/message/send',  'create')->name('message.create');
+Route::get('/remerciement',   'merci')->name('merci');
+});

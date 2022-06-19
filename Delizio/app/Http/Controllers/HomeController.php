@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Message;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,8 @@ class HomeController extends Controller
     {
 
         $dataUsers =  User::all();
+        $messages =  Message::all();
 
-        return view('accueil', compact('dataUsers'));
+        return view('accueil', compact('dataUsers','messages'));
     }
 }

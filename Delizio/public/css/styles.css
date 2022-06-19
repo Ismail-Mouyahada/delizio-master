@@ -1,8 +1,8 @@
 @font-face {
-    font-family: "Varela Round";
+    font-family: "comfortaa";
     font-style: normal;
     font-weight: 400;
-    src: local("Varela Round Regular"), local("VarelaRound-Regular"),
+    src: local("comfortaa Regular"), local("VarelaRound-Regular"),
         url(https://fonts.gstatic.com/s/varelaround/v10/w8gdH283Tvk__Lua32TysjIfp8uK.ttf)
             format("truetype");
 }
@@ -35,7 +35,7 @@ img.image-medium {
   border: 4px #ffc107 solid;
 }
 body {
-    font-family: "Varela Round", sans-serif;
+    font-family: "comfortaa", sans-serif;
     letter-spacing: 0.5px;
     color: #666;
     background: #fff;
@@ -911,3 +911,4 @@ footer .btn {
         margin-bottom: 10px;
     }
 }
+

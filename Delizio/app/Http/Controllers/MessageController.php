@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use Illuminate\Http\Request;
 
-class ContactController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,19 @@ class ContactController extends Controller
      */
     public function index()
     {
-       return view('recipe.contact');
+        //
+    }
+
+
+      protected function validator(Request $request)
+    {
+        return Validator::make($request, [
+            'nom' => ['required', 'string', 'max:120'],
+            'email' => ['required', 'string', 'max:255'],
+            'sujet' => ['required', 'string', 'max:255'],
+            'details' => ['required', 'text', 'max:500']
+            
+        ]);
     }
 
     /**
@@ -21,10 +34,22 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
 
-     }
+        Message::create([
+            'nom' => $request->nom,
+            'email' => $request->email, 
+            'sujet' => $request->sujet, 
+            'details' => $request->details
+            
+        ]);
+        return redirect()->route('merci');
+
+
+    }
+        
+ 
 
     /**
      * Store a newly created resource in storage.
@@ -40,10 +65,10 @@ class ContactController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Message $message)
     {
         //
     }
@@ -51,22 +76,22 @@ class ContactController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function merci()
     {
-        //
+        return view('merci');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Message $message)
     {
         //
     }
@@ -74,10 +99,10 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Message $message)
     {
         //
     }

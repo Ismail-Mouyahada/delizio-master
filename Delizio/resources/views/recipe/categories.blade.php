@@ -45,7 +45,7 @@
             <div class="col-lg-6">
               <div class="form-group">
                 <label>Selectionner un ou plusieurs ingrédients </label>
-                <select class="js-search-ingredients form-control select2-hidden-accessible" name="ingredients[]" multiple="" data-placeholder="Included Ingredients" tabindex="-1" aria-hidden="true">
+                <select class="js-search-ingredients form-control select2-hidden-accessible" name="ingredients[]" multiple="" data-placeholder="Ingrédients dans la rcette" tabindex="-1" aria-hidden="true">
                   <option value="sugar">sucre</option>
                   <option value="wheat-flour">farine blanche</option>
                   <option value="baking-powder">louvure de gâteau</option>
@@ -127,7 +127,7 @@
               @csrf
               @method('post')
               <div class="form-group">
-                <input type="text" name="data" class="form-control" placeholder="Search by Keyword">
+                <input type="text" name="data" class="form-control" placeholder="Saisissez le nom la rcette ici">
                 <button type="search" class="btn">Chercher des recettes</button>
               </div>
 
@@ -139,12 +139,12 @@
   </div>
 </div>
 
-TopRecettes
+ 
 
 <div class="list">
   <div class="container">
 
-        @if($TopRecettes)
+        @if(isset($TopRecettes))
             <div class="row">
               <div class="col-lg-12">
                 <h5><i class="fa fa-cutlery" aria-hidden="true"></i> Résultat de la recherche</h5>
@@ -167,6 +167,16 @@ TopRecettes
                  <div class="col-lg-12 text-center">
                     <a href="#" class="btn btn-load">Voir plus de top recettes</a>
                   </div>
+
+ 
+ 
+
+           @else
+
+          <div class="col-lg-12 text-center">
+                    <a href="#" class="btn btn-load">Désolé mais il y a aucune recette avec ce nom</a>
+         </div>
+
 
         @endif   
   

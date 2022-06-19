@@ -2,7 +2,7 @@
 @extends('layouts.main')
 @section('title')
     Details de la recettes
-@endSection
+@endsection
 
 @section('main')
 

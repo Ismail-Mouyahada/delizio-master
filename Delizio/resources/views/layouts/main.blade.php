@@ -11,18 +11,13 @@
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styles.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+   
 </head>
 
 <body >
@@ -49,8 +44,8 @@
                             Recettes
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ route('liste')}}">listes des recettes</a>
-                            <a class="dropdown-item" href="{{ url('recette/details/{id}')}}">Catégories</a>
+                            <a class="dropdown-item" href="{{ route('recette.categories')}}">listes des recettes</a>
+                             
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -69,30 +64,20 @@
                                     aria-hidden="true"></i> Nouvelle recettes</a>
                         </li>
                       
-         @if (Route::has('login'))
+                    @if (Route::has('login'))
              
                     @auth
                     <li class="nav-item d-flex  ">
-<img width="70" height="auto" class="img-fluid rounded-circle"
-                                    src="{{ Storage::url(Auth::user()->photo) }}">
-
-                                      <a id="nav-link" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                       </a>
-
-
-                        <a class="nav-link" href="{{ url('/accueil') }}"><i class="fa fa-upload"
-                                aria-hidden="true"></i> Mon compte</a>
-                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
-                                        {{ __('Déconnexion') }}
+                    <img width="70" height="auto" class="img-fluid rounded-circle"  src="{{ Storage::url(Auth::user()->photo) }}">
+                    <a id="nav-link" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>  {{ Auth::user()->name }} </a>
+                        <a class="nav-link" href="{{ url('/accueil') }}"><i class="fa fa-upload"  aria-hidden="true"></i> Mon compte</a>
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Déconnexion') }}
                                     </a>
 
-                                    <form id="logout-form" class='d-none' action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
+                <form id="logout-form" class='d-none' action="{{ route('logout') }}" method="POST"
+                    class="d-none">
+                    @csrf
+                </form>
                       
                     </li>
                         
@@ -117,44 +102,35 @@
     </nav>
 
 
-    <main class="container-fluid  h-60"> 
+    <main class="container-fluid auto-mx auto-my "> 
     @yield('main')
     </main>
 
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <h5>About</h5>
-                    <p>Nunc at augue gravida est fermentum vulputate. gravida est fermentum vulputate Pellentesque et
-                        ipsum in dui malesuada tempus.</p>
+                <div class="col-lg-4 col-sm-6">
+                    <h5>Delizio</h5>
+                    <p>Projet créer par les DI21 afin de répondre à une besoin et appredre à être autonome et performant sans hésiter à poser de question quand il faut, la pérseverance paie .</p>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-4 col-sm-6">
                     <h5>Archive</h5>
                     <ul>
-                        <li><a href="#">June 2018</a></li>
-                        <li><a href="#">July 2018</a></li>
-                        <li><a href="#">August 2018</a></li>
-                        <li><a href="#">September 2018</a></li>
+                        <li><a href="{{route('pageAccueil')}}">Top Recettes</a></li>
+                        <li><a href="{{route('pageAccueil')}}">Top Dessets</a></li>
+                        <li><a href="{{route('pageAccueil')}}">Top Boissons</a></li>
+                        <li><a href="{{route('pageAccueil')}}">Top Repas Geek</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-4 col-sm-6">
                     <h5>Recipes</h5>
                     <ul>
-                        <li><a href="browse-recipes.html">Browse Recipes</a></li>
-                        <li><a href="recipe-detail.html">Recipe Detail</a></li>
-                        <li><a href="submit-recipes.html">Submit Recipe</a></li>
+                        <li><a href="{{route('pageAccueil')}}">Formulaire de contact</a></li>
+                        <li><a href="{{route('pageAccueil')}}">Categories</a></li>
+                        <li><a href="{{route('pageAccueil')}}l">Créer une recette</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <h5>Newsletter</h5>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control">
-                        </div>
-                        <button type="submit" class="btn">Subscribe</button>
-                    </form>
-                </div>
+                 
             </div>
         </div>
     </footer>

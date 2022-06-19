@@ -6,11 +6,14 @@
 
 @section('main')
 
-<div class="container p-5 h-100">
+<div class="container-fluid p-5 h-100  ">
     <div class="row justify-content-center ">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Connexion') }}</div>
+        <div class="col-md-6 border-0 rounded-3">
+            <div class="card border-0">
+                <div class="card-header bg-dark text-center">
+                    <h4 class="  text-warning">{{ __('Portail Delizio') }}</h4>
+                    <p class='text-white  '> 🧑‍🍳 Mangez moins salé, moins sucré ! </p>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

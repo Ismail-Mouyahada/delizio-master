@@ -2,7 +2,7 @@
 @extends('layouts.main')
 @section('title')
     Espace utilisateur
-@endSection
+@endsection
 
 @section('main')
 
@@ -31,7 +31,10 @@
 
 
                         <table class="table">
-                        <thead class="thead-light">
+                            <thead class="thead-warning text-text">
+                        <caption>Liste des messages</caption>
+                        </thead>
+                        <thead class="thead-Dark">
                         <tr>
                           <th scope="col">#</th>
                           <th scope="col">Profil</th>
@@ -65,39 +68,34 @@
                           </th>
                       </tr>
                       @endforeach
-                    
- 
+                        <thead> list des utilisateurs</thead>
                         </tbody>
                         </table>
 
                         <table class="table">
-                        <thead class="thead-light">
+                       <thead class="header-warning  ">
+                        <caption>Liste des messages</caption>
+                        </thead>
+                        <thead class="thead-dark  ">
                         <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">First</th>
-                          <th scope="col">Last</th>
-                          <th scope="col">Handle</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Expiditeur</th>
+                          <th scope="col">Sujet</th>
+                          <th scope="col">details</th>
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($messages as $message)
+
                         <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
+                          <th scope="row">{{ $message->created_at }}</th>
+                          <td>{{ $message->nom }}</td>
+                          <td>{{ $message->email }}</td>
+                          <td>{{ $message->sujet }}</td>
                         </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
+
+                         @endforeach 
+                        
                         </tbody>
                         </table>
                     </div>
@@ -105,4 +103,6 @@
             </div>
         </div>
     </div>
+
+
 @endsection

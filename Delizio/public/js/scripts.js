@@ -6,4 +6,6 @@ $(document).ready(function(){$(".js-search-category, .js-search-category2").sele
     <div class="col-lg-1 col-sm-1"> <i class="fa fa-times-circle-o minusbtn" aria-hidden="true"></i> </div>
   </div>
 </div> `)}),$("#sortable").on("click",".minusbtn",function(){$(this).parent().parent().parent().remove()})});
- 
+ function(event) {
+  event.preventDefault();
+};

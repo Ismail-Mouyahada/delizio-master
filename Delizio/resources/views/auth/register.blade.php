@@ -6,11 +6,17 @@
 
 @section('main')
 
-<div class="container py-5">
+<div class="container-fluid py-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header bg-dark text-center">
+                    <h4 class="  text-warning">{{ __('Créateur de recettes') }}</h4>
+                    <p class='text-white  '>   partagez votre passion avec le monde 🧑‍🍳 ! </p>
+                            <p class="text-center">🍕🍔🍟🌭🍿🥞🥨🥐🧀🥗🥙🥪🌮</p>
+
+                     
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
@@ -110,8 +116,8 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                <button type="submit" class="btn btn-warning px-3 text-white w-100">
+                                    {{ __('S\'inscrire') }}
                                 </button>
                             </div>
                         </div>
