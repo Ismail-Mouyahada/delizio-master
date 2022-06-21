@@ -23,10 +23,18 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('photo');
             $table->string('email')->unique();
+            $table->boolean('is_admin')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+
+            
+
+
+
+            
         });
     }
 

@@ -1,24 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Auth;
+
+
+
+use App\Models\User;
 use App\Models\Recette;
 use App\Models\ingredient;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 
 class RecetteController extends Controller
 {
 
 
-
-
-
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-    
     /**
      * Display a listing of the resource.
      *
@@ -34,29 +32,29 @@ class RecetteController extends Controller
 
 
     public function categorie()
-    {       
-     $Ingredients = ingredient::all();   
-     $Recettes = Recette::all();
+    {
+        $Ingredients = ingredient::all();
+        $Recettes = Recette::all();
 
- 
-        return view('recipe.categories', compact('Recettes','Ingredients'));
+
+        return view('recipe.categories', compact('Recettes', 'Ingredients'));
     }
 
 
     public function topRecettes(Request $request)
     {
 
-          $Ingredients = ingredient::all();   
-     $Recettes = Recette::all();
+        $Ingredients = ingredient::all();
+        $Recettes = Recette::all();
 
- 
-     $TopRecettes = DB::table('recettes')->where('title','LIKE','%'.$request->data."%")->get();
 
-     //$TopRecettes = Recette::whereIn('title', [$request->data])->get();
+        $TopRecettes = DB::table('recettes')->where('title', 'LIKE', '%' . $request->data . "%")->get();
 
-    
+        //$TopRecettes = Recette::whereIn('title', [$request->data])->get();
 
-        return view('recipe.categories', compact('TopRecettes','Recettes','Ingredients'));
+
+
+        return view('recipe.categories', compact('TopRecettes', 'Recettes', 'Ingredients'));
     }
 
 
@@ -74,31 +72,31 @@ class RecetteController extends Controller
     }
 
 
-      protected function validator(Request $request)
+    protected function validator(Request $request)
     {
-        return Validator::make($request()->all(), [
+        return Validator::make($request, [
 
 
 
-              "main_image" => ['required', 'mimes:png,jpg,svg,jpeg,webp', 'max:255', 'unique:users'],
-              "title" => ['required', 'string', 'max:255'],
-              "categorie" =>  ['required', 'string', 'max:255'],
-              "summary" => ['required', 'text'],
-              "tag" => ['required', 'string', 'max:40'],
-              "video" => ['required', 'string', 'max:255'], 
-              "ingredient" => ['required', 'text'],  
-              "quantite" =>['required', 'integer'],
-              "description" =>  ['required', 'text'],
-              "temps_repos" => ['required', 'integer'],  
-              "temps_preparation" => ['required', 'integer'], 
-              "temps_cuisson" => ['required', 'integer'], 
-              "calories" => ['required', 'integer'], 
-              "carbohydrates" => ['required', 'integer'],  
-              "gras" => ['required', 'integer'],  
-              "potreines" => ['required', 'integer'],  
-              "cholesterole" => ['required', 'integer'], 
-              "difficulte" => ['required', 'integer'],
-              "budget" => ['required', 'integer'], 
+            "main_image" => ['required', 'mimes:png,jpg,svg,jpeg,webp', 'max:255', 'unique:users'],
+            "title" => ['required', 'string', 'max:255'],
+            "categorie" =>  ['required', 'string', 'max:255'],
+            "summary" => ['required', 'text'],
+            "tag" => ['required', 'string', 'max:40'],
+            "video" => ['required', 'string', 'max:255'],
+            "ingredient" => ['required', 'text'],
+            "quantite" => ['required', 'integer'],
+            "description" =>  ['required', 'text'],
+            "temps_repos" => ['required', 'integer'],
+            "temps_preparation" => ['required', 'integer'],
+            "temps_cuisson" => ['required', 'integer'],
+            "calories" => ['required', 'integer'],
+            "carbohydrates" => ['required', 'integer'],
+            "gras" => ['required', 'integer'],
+            "potreines" => ['required', 'integer'],
+            "cholesterole" => ['required', 'integer'],
+            "difficulte" => ['required', 'integer'],
+            "budget" => ['required', 'integer'],
         ]);
     }
 
@@ -111,31 +109,33 @@ class RecetteController extends Controller
     public function store(Request $request)
     {
 
-       
-        Recette::Create([
-              "main_image" => $request->main_image->store('recettes', 'public'),
-              "title" => $request->title,
-              "categorie" =>  $request->categorie, 
-              "summary" => $request->summary,
-              "tag" => $request->tag,  
-              "video" => $request->video,  
-              "ingredient" => $request->ingredient,  
-              "quantite" => $request->quantite,  
-              "description" =>  $request->description, 
-              "temps_repos" => $request->temps_repos,  
-              "temps_preparation" => $request->temps_preparation,  
-              "temps_cuisson" => $request->temps_cuisson, 
-              "calories" => $request->calories,  
-              "carbohydrates" => $request->carbohydrates,  
-              "gras" => $request->gras,  
-              "potreines" => $request->potreines,  
-              "cholesterole" =>  $request->cholesterole, 
-              "difficulte" => $request->difficulte, 
-              "budget" => $request->budget,
-              "user_id"=>auth()->user()->id,  
-              
+        dd($request);
 
-         ]);
+        Recette::create([
+
+            "main_image" => $request->main_image->store('recettes', 'public'),
+            "title" => $request->title,
+            "categorie" =>  $request->categorie,
+            "summary" => $request->summary,
+            "tag" => $request->tag,
+            "video" => $request->video,
+            "ingredient" => $request->ingredient,
+            "quantite" => $request->quantite,
+            "description" =>  $request->description,
+            "temps_repos" => $request->temps_repos,
+            "temps_preparation" => $request->temps_preparation,
+            "temps_cuisson" => $request->temps_cuisson,
+            "calories" => $request->calories,
+            "carbohydrates" => $request->carbohydrates,
+            "gras" => $request->gras,
+            "potreines" => $request->potreines,
+            "cholesterole" =>  $request->cholesterole,
+            "difficulte" => $request->difficulte,
+            "budget" => $request->budget,
+            "user_id" =>  Auth::user()->id,
+            "categorie_id" =>  $request->categorie,
+
+        ]);
 
         return redirect('/');
     }
@@ -149,9 +149,9 @@ class RecetteController extends Controller
     public function show($id)
     {
 
-          $recette = Recette::findOrFail($id);
- 
-        return view('recipe.show',compact('recette'));
+        $recette = Recette::findOrFail($id);
+
+        return view('recipe.show', compact('recette'));
     }
 
     /**
@@ -163,8 +163,8 @@ class RecetteController extends Controller
     public function edit($id)
     {
         $recette = Recette::findOrFail($id);
-        
-        return view('recipe.edit',compact('recette'));
+
+        return view('recipe.edit', compact('recette'));
     }
 
     /**
@@ -179,32 +179,32 @@ class RecetteController extends Controller
         $recette = Recette::find($id);
 
 
-dd($recette);
+        dd($recette);
 
-    $recette =   User::where("id", $id)->update([  
- 
-              "main_image" => $request->main_image->store('recettes', 'public'),
-              "title" => $request->title,
-              "categorie" =>  $request->categorie, 
-              "summary" => $request->summary,
-              "tag" => $request->tag,  
-              "video" => $request->video,  
-              "ingredient" => $request->ingredient,  
-              "quantite" => $request->quantite,  
-              "description" =>  $request->description, 
-              "temps_repos" => $request->temps_repos,  
-              "temps_preparation" => $request->temps_preparation,  
-              "temps_cuisson" => $request->temps_cuisson, 
-              "calories" => $request->calories,  
-              "carbohydrates" => $request->carbohydrates,  
-              "gras" => $request->gras,  
-              "potreines" => $request->potreines,  
-              "cholesterole" =>  $request->cholesterole, 
-              "difficulte" => $request->difficulte, 
-              "budget" => $request->budget,
-         ])->save();
-             
-       return view( url('Recette/details/'.$Recette->id));
+        $recette =   User::where("id", $id)->update([
+
+            "main_image" => $request->main_image->store('recettes', 'public'),
+            "title" => $request->title,
+            "categorie" =>  $request->categorie,
+            "summary" => $request->summary,
+            "tag" => $request->tag,
+            "video" => $request->video,
+            "ingredient" => $request->ingredient,
+            "quantite" => $request->quantite,
+            "description" =>  $request->description,
+            "temps_repos" => $request->temps_repos,
+            "temps_preparation" => $request->temps_preparation,
+            "temps_cuisson" => $request->temps_cuisson,
+            "calories" => $request->calories,
+            "carbohydrates" => $request->carbohydrates,
+            "gras" => $request->gras,
+            "potreines" => $request->potreines,
+            "cholesterole" =>  $request->cholesterole,
+            "difficulte" => $request->difficulte,
+            "budget" => $request->budget,
+        ])->save();
+
+        return view(url('Recette/details/' . $recette->id));
     }
 
     /**
@@ -214,24 +214,23 @@ dd($recette);
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    { 
+    {
 
 
 
-        $Recette =Recette::find($id);
+        $Recette = Recette::find($id);
         $Recette->delete();
-         return redirect()->route('pageAccueil')->with('message','la recette a été supprimée avec succès 😥');
-
+        return redirect()->route('pageAccueil')->with('message', 'la recette a été supprimée avec succès 😥');
     }
 
 
-     public function likeRecette($id)
+    public function likeRecette($id)
     {
         $recette = Recette::find($id);
         $recette->like();
         $recette->save();
 
-        return redirect()->route('pageAccueil')->with('message','Vous avez liké la recette!');
+        return redirect()->route('pageAccueil')->with('message', 'Vous avez liké la recette!');
     }
 
     public function unlikeRecette($id)
@@ -239,7 +238,7 @@ dd($recette);
         $recette = Recette::find($id);
         $recette->unlike();
         $recette->save();
-        
-        return redirect()->route('pageAccueil')->with('message','Vous avez disliké la recette!');
+
+        return redirect()->route('pageAccueil')->with('message', 'Vous avez disliké la recette!');
     }
 }

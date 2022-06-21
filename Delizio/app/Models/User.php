@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
- 
 
+
+use App\Models\Note;
+use App\Models\Comment;
+use App\Models\Recette;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -29,6 +32,7 @@ class User extends Authenticatable
         'photo',
         'email',
         'password',
+        'user_id'
     ];
 
     /**
@@ -50,12 +54,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function recettes() 
-        {
-            return $this->hasMany(Recette::class);
-        }
+    public function recettes()
+    {
+        return $this->hasMany(Recette::class, 'recette_id');
+    }
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'comment_id');
+    }
+
+    public function note()
+    {
+        return $this->hasMany(Note::class, 'note_id');
     }
 }

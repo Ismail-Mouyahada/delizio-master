@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Recette;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Factories\BelongsToManyRelationship;
 
 class Categorie extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['categorie'];
+    protected $fillable = ['nom'];
     /**
      * Get the user that owns the Categorie
      *
@@ -18,6 +19,8 @@ class Categorie extends Model
      */
     public function recette() 
     {
-        return $this->belongsTo(Recette::class, 'recette_id');
+        return $this->belongsTo(Recette::class);
     }
+
+
 }

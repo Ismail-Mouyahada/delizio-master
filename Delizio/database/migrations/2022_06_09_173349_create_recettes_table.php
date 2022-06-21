@@ -37,8 +37,10 @@ class CreateRecettesTable extends Migration
             $table->string('video');
 
             $table->foreignId('user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->index('user_id');
 
-
+            $table->foreignId('categorie_id')->nullable()->constrained('categories')->onUpdate('cascade')->onDelete('cascade');
+            $table->index('categorie_id');
 
             $table->timestamps();
         });
@@ -51,6 +53,8 @@ class CreateRecettesTable extends Migration
      */
     public function down()
     {
+        Schema::dropForeign('categorie_id');
+        Schema::dropForeign('user_id');
         Schema::dropIfExists('recettes');
     }
 }

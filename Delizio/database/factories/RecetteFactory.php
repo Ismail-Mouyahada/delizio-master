@@ -31,7 +31,9 @@ class RecetteFactory extends Factory
             'cholesterole' => $this->faker->numberBetween(0, 100),
             'budget' => $this->faker->numberBetween(0, 50),
             'difficulte' => $this->faker->numberBetween(1, 3),
-            'video' => $this->faker->imageUrl()
+            'video' => $this->faker->imageUrl(),
+            'user_id' => $this->faker->numberBetween(1, 3),
+            'categorie_id' => $this->faker->randomDigitNotNull,
         ];
     }
 }

@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label>Titre la recette</label>
                                 <input type="text" name="title" class="form-control">
-                                 @error('title')
+                                @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -60,7 +60,7 @@
                                     <option value="17">Repas de vacances</option>
                                     <option value="17">Pâtisserie</option>
                                 </select>
-                                 @error('categorie')
+                                @error('categorie')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -70,7 +70,7 @@
                             <div class="form-group">
                                 <label>Résumé</label>
                                 <textarea class="form-control" rows="4" name="summary" required="required"></textarea>
-                                 @error('summary')
+                                @error('summary')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -80,7 +80,7 @@
                             <div class="form-group">
                                 <label>Etiquette</label>
                                 <input type="text" name="tag" class="form-control">
-                                 @error('tag')
+                                @error('tag')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -90,7 +90,7 @@
                             <div class="form-group">
                                 <label>lien de video</label>
                                 <input type="text" name="video" class="form-control">
-                                 @error('video')
+                                @error('video')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -99,9 +99,19 @@
 
 
                             <div class="form-group">
-                                <label>Téléverser les images</label>
-                                <input type="file" name="main_image" class="form-control dropzone" id="dropzone">
-                                 @error('main_image')
+                                <label>Image Recette</label>
+                                <input type="file" name="main_image"  class="form-control dropzone" id="dropzone">
+                                @error('main_image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            div class="form-group">
+                                <label>Téléverser D'autres images</label>
+                                <input type="file" name="images[]" accept="image/*" multiple="multiple"  class="form-control dropzone" id="dropzone">
+                                @error('images')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -118,22 +128,22 @@
                                                 <i class="fa fa-arrows" aria-hidden="true"></i>
                                             </div>
                                             <div class="col-lg-5 col-sm-5">
-                                                <input type="text" name="ingredient" class="form-control"
+                                                <input type="text" name="ingredient[]" class="form-control"
                                                     placeholder="Nom de l'ingredient">
-                                                     @error('ingredient')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                     @enderror
+                                                @error('ingredient')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                             <div class="col-lg-5 col-sm-5">
-                                                <input type="text" name="quantite" class="form-control"
+                                                <input type="text" name="quantite[]" class="form-control"
                                                     placeholder="Quantité ou information additionnelle">
-                                                     @error('quantite')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                     @enderror
+                                                @error('quantite')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                             <div class="col-lg-1 col-sm-1">
                                                 <i class="fa fa-times-circle-o minusbtn" aria-hidden="true"></i>
@@ -149,7 +159,7 @@
                             <div class="form-group">
                                 <label>Description:</label>
                                 <textarea class="form-control" name="description" rows="4" required="required"></textarea>
-                                 @error('description')
+                                @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -203,10 +213,10 @@
                                 <div class="col-sm-10">
                                     <input type="number" name="calories" class="form-control">
                                     @error('calories')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -214,10 +224,10 @@
                                 <div class="col-sm-10">
                                     <input type="number" name="carbohydrates" class="form-control">
                                     @error('carbohydrates')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -225,10 +235,10 @@
                                 <div class="col-sm-10">
                                     <input type="number" name="gras" class="form-control">
                                     @error('gras')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -236,10 +246,10 @@
                                 <div class="col-sm-10">
                                     <input type="number" name="potreines" class="form-control">
                                     @error('potreines')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -247,10 +257,10 @@
                                 <div class="col-sm-10">
                                     <input type="number" name="cholesterole" class="form-control">
                                     @error('cholesterole')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -267,20 +277,21 @@
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                     @enderror
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Budget (€)</label>
                                 <div class="col-sm-10">
-                                    <input type="number" name="budget" class="form-control" placeholder="Coût total de la recette pour 1 personne">
+                                    <input type="number" name="budget" class="form-control"
+                                        placeholder="Coût total de la recette pour 1 personne">
 
                                     @error('budget')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                     @enderror
+                                    @enderror
 
                                 </div>
                             </div>

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Recette;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Step extends Model
 {
@@ -12,6 +13,6 @@ class Step extends Model
     protected $fillable = ['step_title','step_details'];
     public function recette()
         {
-            return $this->belongsTo(Recette::class, 'recette_id');
+            return $this->belongsTo(Recette::class);
         }
 }

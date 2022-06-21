@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Recette;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Note extends Model
 {
@@ -28,6 +29,6 @@ class Note extends Model
      */
     public function recette()
     {
-        return $this->belongsTo(Recette::class, 'recette_id');
+        return $this->belongsTo(Recette::class);
     }
 }
