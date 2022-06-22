@@ -1,165 +1,126 @@
 <?php
 
+
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines contain the default error messages used by
-    | the validator class. Some of these rules have multiple versions such
-    | as the size rules. Feel free to tweak each of these messages here.
-    |
-    */
-
-    'accepted' => 'The :attribute must be accepted.',
-    'accepted_if' => 'The :attribute must be accepted when :other is :value.',
-    'active_url' => 'The :attribute is not a valid URL.',
-    'after' => 'The :attribute must be a date after :date.',
-    'after_or_equal' => 'The :attribute must be a date after or equal to :date.',
-    'alpha' => 'The :attribute must only contain letters.',
-    'alpha_dash' => 'The :attribute must only contain letters, numbers, dashes and underscores.',
-    'alpha_num' => 'The :attribute must only contain letters and numbers.',
-    'array' => 'The :attribute must be an array.',
-    'before' => 'The :attribute must be a date before :date.',
-    'before_or_equal' => 'The :attribute must be a date before or equal to :date.',
-    'between' => [
-        'numeric' => 'The :attribute must be between :min and :max.',
-        'file' => 'The :attribute must be between :min and :max kilobytes.',
-        'string' => 'The :attribute must be between :min and :max characters.',
-        'array' => 'The :attribute must have between :min and :max items.',
+    'accepted'             => 'Ce champ doit être accepté.',
+    'accepted_if'          => 'Ce champ doit être accepté quand :other a la valeur :value.',
+    'active_url'           => 'Ce n\'est pas une URL valide',
+    'after'                => 'La date doit être postérieure au :date.',
+    'after_or_equal'       => 'La date doit être postérieure ou égale au :date.',
+    'alpha'                => 'Ce champ doit contenir uniquement des lettres',
+    'alpha_dash'           => 'Ce champ doit contenir uniquement des lettres, des chiffres et des tirets.',
+    'alpha_num'            => 'Ce champ doit contenir uniquement des chiffres et des lettres.',
+    'array'                => 'Ce champ doit être un tableau.',
+    'before'               => 'Ce champ doit être une date antérieure au :date.',
+    'before_or_equal'      => 'Ce champ doit être une date antérieure ou égale au :date.',
+    'between'              => [
+        'array'   => 'Le tableau doit contenir entre :min et :max éléments.',
+        'file'    => 'La taille du fichier doit être comprise entre :min et :max kilo-octets.',
+        'numeric' => 'La valeur doit être comprise entre :min et :max.',
+        'string'  => 'Le texte doit contenir entre :min et :max caractères.',
     ],
-    'boolean' => 'The :attribute field must be true or false.',
-    'confirmed' => 'The :attribute confirmation does not match.',
-    'current_password' => 'The password is incorrect.',
-    'date' => 'The :attribute is not a valid date.',
-    'date_equals' => 'The :attribute must be a date equal to :date.',
-    'date_format' => 'The :attribute does not match the format :format.',
-    'declined' => 'The :attribute must be declined.',
-    'declined_if' => 'The :attribute must be declined when :other is :value.',
-    'different' => 'The :attribute and :other must be different.',
-    'digits' => 'The :attribute must be :digits digits.',
-    'digits_between' => 'The :attribute must be between :min and :max digits.',
-    'dimensions' => 'The :attribute has invalid image dimensions.',
-    'distinct' => 'The :attribute field has a duplicate value.',
-    'email' => 'The :attribute must be a valid email address.',
-    'ends_with' => 'The :attribute must end with one of the following: :values.',
-    'enum' => 'The selected :attribute is invalid.',
-    'exists' => 'The selected :attribute is invalid.',
-    'file' => 'The :attribute must be a file.',
-    'filled' => 'The :attribute field must have a value.',
-    'gt' => [
-        'numeric' => 'The :attribute must be greater than :value.',
-        'file' => 'The :attribute must be greater than :value kilobytes.',
-        'string' => 'The :attribute must be greater than :value characters.',
-        'array' => 'The :attribute must have more than :value items.',
+    'boolean'              => 'Ce champ doit être vrai ou faux.',
+    'confirmed'            => 'Le champ de confirmation ne correspond pas.',
+    'current_password'     => 'Le mot de passe est incorrect.',
+    'date'                 => 'Ce n\'est pas une date valide.',
+    'date_equals'          => 'La date doit être égale à :date.',
+    'date_format'          => 'Ce champ ne correspond pas au format :format.',
+    'declined'             => 'Cette valeur doit être déclinée.',
+    'declined_if'          => 'Cette valeur doit être déclinée quand :other a la valeur :value.',
+    'different'            => 'Cette valeur doit être différente de :other.',
+    'digits'               => 'Ce champ doit contenir :digits chiffres.',
+    'digits_between'       => 'Ce champ doit contenir entre :min et :max chiffres.',
+    'dimensions'           => 'La taille de l\'image n\'est pas conforme.',
+    'distinct'             => 'Ce champ a une valeur en double.',
+    'email'                => 'Ce champ doit être une adresse e-mail valide.',
+    'ends_with'            => 'Ce champ doit se terminer par une des valeurs suivantes : :values',
+    'enum'                 => 'Ce champ selectionné est invalide.',
+    'exists'               => 'Ce champ sélectionné est invalide.',
+    'file'                 => 'Ce champ doit être un fichier.',
+    'filled'               => 'Ce champ doit avoir une valeur.',
+    'gt'                   => [
+        'array'   => 'Le tableau doit contenir plus de :value éléments.',
+        'file'    => 'La taille du fichier doit être supérieure à :value kilo-octets.',
+        'numeric' => 'La valeur doit être supérieure à :value.',
+        'string'  => 'Le texte doit contenir plus de :value caractères.',
     ],
-    'gte' => [
-        'numeric' => 'The :attribute must be greater than or equal to :value.',
-        'file' => 'The :attribute must be greater than or equal to :value kilobytes.',
-        'string' => 'The :attribute must be greater than or equal to :value characters.',
-        'array' => 'The :attribute must have :value items or more.',
+    'gte'                  => [
+        'array'   => 'Le tableau doit contenir au moins :value éléments.',
+        'file'    => 'La taille du fichier doit être supérieure ou égale à :value kilo-octets.',
+        'numeric' => 'La valeur doit être supérieure ou égale à :value.',
+        'string'  => 'Le texte doit contenir au moins :value caractères.',
     ],
-    'image' => 'The :attribute must be an image.',
-    'in' => 'The selected :attribute is invalid.',
-    'in_array' => 'The :attribute field does not exist in :other.',
-    'integer' => 'The :attribute must be an integer.',
-    'ip' => 'The :attribute must be a valid IP address.',
-    'ipv4' => 'The :attribute must be a valid IPv4 address.',
-    'ipv6' => 'The :attribute must be a valid IPv6 address.',
-    'json' => 'The :attribute must be a valid JSON string.',
-    'lt' => [
-        'numeric' => 'The :attribute must be less than :value.',
-        'file' => 'The :attribute must be less than :value kilobytes.',
-        'string' => 'The :attribute must be less than :value characters.',
-        'array' => 'The :attribute must have less than :value items.',
+    'image'                => 'Ce champ doit être une image.',
+    'in'                   => 'Ce champ est invalide.',
+    'in_array'             => 'Ce champ n\'existe pas dans :other.',
+    'integer'              => 'Ce champ doit être un entier.',
+    'ip'                   => 'Ce champ doit être une adresse IP valide.',
+    'ipv4'                 => 'Ce champ doit être une adresse IPv4 valide.',
+    'ipv6'                 => 'Ce champ doit être une adresse IPv6 valide.',
+    'json'                 => 'Ce champ doit être un document JSON valide.',
+    'lt'                   => [
+        'array'   => 'Le tableau doit contenir moins de :value éléments.',
+        'file'    => 'La taille du fichier doit être inférieure à :value kilo-octets.',
+        'numeric' => 'La valeur doit être inférieure à :value.',
+        'string'  => 'Le texte doit contenir moins de :value caractères.',
     ],
-    'lte' => [
-        'numeric' => 'The :attribute must be less than or equal to :value.',
-        'file' => 'The :attribute must be less than or equal to :value kilobytes.',
-        'string' => 'The :attribute must be less than or equal to :value characters.',
-        'array' => 'The :attribute must not have more than :value items.',
+    'lte'                  => [
+        'array'   => 'Le tableau doit contenir au plus :value éléments.',
+        'file'    => 'La taille du fichier doit être inférieure ou égale à :value kilo-octets.',
+        'numeric' => 'La valeur doit être inférieure ou égale à :value.',
+        'string'  => 'Le texte doit contenir au plus :value caractères.',
     ],
-    'mac_address' => 'The :attribute must be a valid MAC address.',
-    'max' => [
-        'numeric' => 'The :attribute must not be greater than :max.',
-        'file' => 'The :attribute must not be greater than :max kilobytes.',
-        'string' => 'The :attribute must not be greater than :max characters.',
-        'array' => 'The :attribute must not have more than :max items.',
+    'mac_address'          => 'La valeur doit être une adresse MAC valide.',
+    'max'                  => [
+        'array'   => 'Le tableau ne peut contenir plus de :max éléments.',
+        'file'    => 'La taille du fichier ne peut pas dépasser :max kilo-octets.',
+        'numeric' => 'La valeur ne peut être supérieure à :max.',
+        'string'  => 'Le texte ne peut contenir plus de :max caractères.',
     ],
-    'mimes' => 'The :attribute must be a file of type: :values.',
-    'mimetypes' => 'The :attribute must be a file of type: :values.',
-    'min' => [
-        'numeric' => 'The :attribute must be at least :min.',
-        'file' => 'The :attribute must be at least :min kilobytes.',
-        'string' => 'The :attribute must be at least :min characters.',
-        'array' => 'The :attribute must have at least :min items.',
+    'mimes'                => 'Le fichier doit être de type : :values.',
+    'mimetypes'            => 'Le fichier doit être de type : :values.',
+    'min'                  => [
+        'array'   => 'Le tableau doit contenir au moins :min éléments.',
+        'file'    => 'La taille du fichier doit être supérieure ou égale à :min kilo-octets.',
+        'numeric' => 'La valeur doit être supérieure ou égale à :min.',
+        'string'  => 'Le texte doit contenir au moins :min caractères.',
     ],
-    'multiple_of' => 'The :attribute must be a multiple of :value.',
-    'not_in' => 'The selected :attribute is invalid.',
-    'not_regex' => 'The :attribute format is invalid.',
-    'numeric' => 'The :attribute must be a number.',
-    'password' => 'The password is incorrect.',
-    'present' => 'The :attribute field must be present.',
-    'prohibited' => 'The :attribute field is prohibited.',
-    'prohibited_if' => 'The :attribute field is prohibited when :other is :value.',
-    'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
-    'prohibits' => 'The :attribute field prohibits :other from being present.',
-    'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
-    'required_array_keys' => 'The :attribute field must contain entries for: :values.',
-    'required_if' => 'The :attribute field is required when :other is :value.',
-    'required_unless' => 'The :attribute field is required unless :other is in :values.',
-    'required_with' => 'The :attribute field is required when :values is present.',
-    'required_with_all' => 'The :attribute field is required when :values are present.',
-    'required_without' => 'The :attribute field is required when :values is not present.',
-    'required_without_all' => 'The :attribute field is required when none of :values are present.',
-    'same' => 'The :attribute and :other must match.',
-    'size' => [
-        'numeric' => 'The :attribute must be :size.',
-        'file' => 'The :attribute must be :size kilobytes.',
-        'string' => 'The :attribute must be :size characters.',
-        'array' => 'The :attribute must contain :size items.',
+    'multiple_of'          => 'La valeur doit être un multiple de :value',
+    'not_in'               => 'Le champ sélectionné n\'est pas valide.',
+    'not_regex'            => 'Le format du champ n\'est pas valide.',
+    'numeric'              => 'Ce champ doit contenir un nombre.',
+    'password'             => 'Le mot de passe est incorrect',
+    'present'              => 'Ce champ doit être présent.',
+    'prohibited'           => 'Ce champ est interdit',
+    'prohibited_if'        => 'Ce champ est interdit quand :other a la valeur :value.',
+    'prohibited_unless'    => 'Ce champ est interdit à moins que :other ait l\'une des valeurs :values.',
+    'prohibits'            => 'Ce champ interdit :other d\'être présent.',
+    'regex'                => 'Le format du champ est invalide.',
+    'required'             => 'Ce champ est obligatoire.',
+    'required_array_keys'  => 'Ce champ doit contenir des entrées pour : :values.',
+    'required_if'          => 'Ce champ est obligatoire quand la valeur de :other est :value.',
+    'required_unless'      => 'Ce champ est obligatoire sauf si :other est :values.',
+    'required_with'        => 'Ce champ est obligatoire quand :values est présent.',
+    'required_with_all'    => 'Ce champ est obligatoire quand :values sont présents.',
+    'required_without'     => 'Ce champ est obligatoire quand :values n\'est pas présent.',
+    'required_without_all' => 'Ce champ est requis quand aucun de :values n\'est présent.',
+    'same'                 => 'Ce champ doit être identique à :other.',
+    'size'                 => [
+        'array'   => 'Le tableau doit contenir :size éléments.',
+        'file'    => 'La taille du fichier doit être de :size kilo-octets.',
+        'numeric' => 'La valeur doit être :size.',
+        'string'  => 'Le texte doit contenir :size caractères.',
     ],
-    'starts_with' => 'The :attribute must start with one of the following: :values.',
-    'string' => 'The :attribute must be a string.',
-    'timezone' => 'The :attribute must be a valid timezone.',
-    'unique' => 'The :attribute has already been taken.',
-    'uploaded' => 'The :attribute failed to upload.',
-    'url' => 'The :attribute must be a valid URL.',
-    'uuid' => 'The :attribute must be a valid UUID.',
-
-
-     
-    /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify custom validation messages for attributes using the
-    | convention "attribute.rule" to name the lines. This makes it quick to
-    | specify a specific custom language line for a given attribute rule.
-    |
-    */
-
-    'custom' => [
+    'starts_with'          => 'Ce champ doit commencer avec une des valeurs suivantes : :values',
+    'string'               => 'Ce champ doit être une chaîne de caractères.',
+    'timezone'             => 'Ce champ doit être un fuseau horaire valide.',
+    'unique'               => 'La valeur est déjà utilisée.',
+    'uploaded'             => 'Le fichier n\'a pu être téléversé.',
+    'url'                  => 'Le format de l\'URL n\'est pas valide.',
+    'uuid'                 => 'Ce champ doit être un UUID valide',
+    'custom'               => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Attributes
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used to swap our attribute placeholder
-    | with something more reader friendly such as "E-Mail Address" instead
-    | of "email". This simply helps us make our message more expressive.
-    |
-    */
-
-    'attributes' => [],
-
 ];
