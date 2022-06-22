@@ -14,7 +14,7 @@ class ImageFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nom_image'=> $this->faker->imageUrl(),
         ];
     }
 }

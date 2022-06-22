@@ -10,7 +10,7 @@ class Ustencil extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom', 'quantite'];
+    protected $fillable = ['nom', 'quantite','recette_id'];
 
 
 

@@ -15,7 +15,8 @@ class IngredientFactory extends Factory
     {
         return [
             'ingredient' => $this->faker->name(),
-            'quantite' => $this->faker->numberBetween(0,15)
+            'quantite' => $this->faker->numberBetween(0, 10),
+            'key'=> $this->faker->numberBetween(1351353543,45343535),
         ];
     }
 }

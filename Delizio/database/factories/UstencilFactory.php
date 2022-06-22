@@ -14,7 +14,8 @@ class UstencilFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nom' => $this->faker->name(),
+            'quantite' => $this->faker->numberBetween(0, 10),
         ];
     }
 }

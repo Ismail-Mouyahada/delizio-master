@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Ustencil;
 use Illuminate\Database\Seeder;
 
 class UstencilSeeder extends Seeder
@@ -13,6 +14,6 @@ class UstencilSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Ustencil::factory(10)->create();
     }
 }

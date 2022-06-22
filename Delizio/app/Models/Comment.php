@@ -11,7 +11,7 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['commentaire'];
+    protected $fillable = ['commentaire','recette_di'];
     
     /**
      * Get the user that owns the Comment

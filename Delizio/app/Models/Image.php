@@ -11,8 +11,7 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom_image'];
-
+    protected $fillable = ['nom_image', 'recette_id'];
 
     /**
      * Get the user that owns the Image
@@ -21,6 +20,6 @@ class Image extends Model
      */
     public function recette()
     {
-        return $this->belongsTo(Recette::class, 'recette_id');
+        return $this->belongsTo(Recette::class,'recette_id');
     }
 }

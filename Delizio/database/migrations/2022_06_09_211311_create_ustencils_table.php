@@ -14,17 +14,16 @@ class CreateUstencilsTable extends Migration
     public function up()
     {
         Schema::create('ustencils', function (Blueprint $table) {
-
             $table->id();
             $table->string('nom');
             $table->integer('quantite');
-
-            // Forgeinkey for each recipe linked to its kitchen tools
-            $table->foreignId('recette_id')->constrained('recettes')->onUpdate('cascade')->onDelete('cascade');
-
-            // Recipe better HTTP request
+            $table
+                ->foreignId('recette_id')
+                ->nullable()
+                ->constrained('recettes')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->index('recette_id');
-
             $table->timestamps();
         });
     }

@@ -22,8 +22,12 @@
                     <th scope="row">{{ $categorie->nom }}</th>
                     <th scope="row">
 
-                        <button class="btn btn-warning text-white" type="submit"><i class="fa fa-edit"></i></button>
-                        <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                        <form action="{{ route('categorie.destroy', $categorie->id) }}" method='delete'>
+                            @csrf
+                            @method('delete')
+                            <button type="submit" onclick="function(event) {event.preventDefault();}"
+                                class="btn btn-danger text-white"><i class="fa fa-trash"></i></button>
+                        </form>
 
 
                     </th>

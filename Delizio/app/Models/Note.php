@@ -10,7 +10,7 @@ class Note extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['note'];
+    protected $fillable = ['note','recette_id'];
 
     /**
      * Get the user associated with the Note

@@ -16,11 +16,15 @@ class CreateIngredientsTable extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
             $table->string('ingredient');
-            $table->float('Quantite');
-
-            $table->foreignId('recette_id')->constrained('recettes')->onUpdate('cascade')->onDelete('cascade');
+            $table->float('quantite');
+            $table->bigInteger('key');
+            $table
+                ->foreignId('recette_id')
+                ->nullable()
+                ->constrained('recettes')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->index('recette_id');
-
             $table->timestamps();
         });
     }

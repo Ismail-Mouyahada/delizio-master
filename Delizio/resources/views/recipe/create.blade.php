@@ -100,7 +100,7 @@
 
                             <div class="form-group">
                                 <label>Image Recette</label>
-                                <input type="file" name="main_image"  class="form-control dropzone" id="dropzone">
+                                <input type="file" name="main_image" class="form-control dropzone" id="dropzone">
                                 @error('main_image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -108,7 +108,7 @@
                                 @enderror
                             </div>
 
-                            div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Téléverser D'autres images</label>
                                 <input type="file" name="images[]" accept="image/*" multiple="multiple"  class="form-control dropzone" id="dropzone">
                                 @error('images')
@@ -116,7 +116,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> --}}
 
                             <div class="form-group">
                                 <label>Ingredients:</label>

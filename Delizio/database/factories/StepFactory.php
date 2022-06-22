@@ -14,7 +14,8 @@ class StepFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'step_title'=>$this->faker->title,
+            'step_details'=>$this->faker->text(230),
         ];
     }
 }

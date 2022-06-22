@@ -18,13 +18,40 @@ class Recette extends Model
 {
     use HasFactory, Likeable;
 
-    protected $fillable = ['main_image', 'tag', 'ingredient', 'quantite', 'description', 'categorie', 'title', 'summary', 'description', 'likes', 'temps_cuisson', 'temps_preparation', 'temps_repos', 'calories', 'gras', 'proteines', 'carbohydrates', 'cholesterole', 'budget', 'difficulte', 'video', 'images', 'user_id', 'categorie_id'];
+    protected $fillable = [
+        'main_image',
+        'tag',
+        'description',
+        'categorie',
+        'title',
+        'summary',
+        'description',
+        'temps_cuisson',
+        'temps_preparation',
+        'temps_repos',
+        'calories',
+        'gras',
+        'proteines',
+        'carbohydrates',
+        'cholesterole',
+        'budget',
+        'difficulte',
+        'video',
+        'categorie_id',
+        'user_id',
+        'ingredient_id',
+        'image_id',
+        'ustencil_id',
+        'step_id',
+        'note_id',
+        'comment_id',
+        'key',
+    ];
     /**
      * Get the user associated with the Recette
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-
 
     /**
      * Get all of the comments for the Recette
@@ -54,7 +81,6 @@ class Recette extends Model
     {
         return $this->hasMany(Image::class, 'image_id');
     }
-
 
     public function ingredients()
     {

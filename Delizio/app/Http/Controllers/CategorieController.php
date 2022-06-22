@@ -15,7 +15,7 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        $categories = Categorie::orderBy('id')->cursorPaginate(10);;
+        $categories = Categorie::orderBy('id')->cursorPaginate(10);
         return view('categorie.liste', compact('categories'));
     }
 
@@ -37,13 +37,11 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-
-
         Categorie::create([
             'nom' => $request->nom,
         ]);
 
-        return redirect(route('categorie.liste'));
+        return redirect(route('categorie.index'));
     }
 
     /**
@@ -88,6 +86,8 @@ class CategorieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Categorie = Categorie::findOrFail($id);
+        $Categorie->delete();
+        return redirect(route('categorie.index'));
     }
 }

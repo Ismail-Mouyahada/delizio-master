@@ -18,11 +18,12 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'surname' => $this->faker->name(),
             'username' => $this->faker->name(),
-            'photo' => $this->default('user.png'),
+            'photo' => $this->faker->imageUrl(),
             'email' => $this->faker->unique()->safeEmail(),
-            'is_admin' => $this->faker->boolean(10),
+            'is_admin' => true,
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' =>
+                '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];
     }

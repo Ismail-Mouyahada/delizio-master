@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers;
 
-
-
 use App\Models\User;
+use App\Models\Image;
 use App\Models\Recette;
-use App\Models\ingredient;
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-
 class RecetteController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
@@ -29,37 +25,30 @@ class RecetteController extends Controller
         return view('recipe.categories', compact('Recettes'));
     }
 
-
-
     public function categorie()
     {
         $Ingredients = ingredient::all();
         $Recettes = Recette::all();
 
-
         return view('recipe.categories', compact('Recettes', 'Ingredients'));
     }
 
-
     public function topRecettes(Request $request)
     {
-
         $Ingredients = ingredient::all();
         $Recettes = Recette::all();
 
-
-        $TopRecettes = DB::table('recettes')->where('title', 'LIKE', '%' . $request->data . "%")->get();
+        $TopRecettes = DB::table('recettes')
+            ->where('title', 'LIKE', '%' . $request->data . '%')
+            ->get();
 
         //$TopRecettes = Recette::whereIn('title', [$request->data])->get();
 
-
-
-        return view('recipe.categories', compact('TopRecettes', 'Recettes', 'Ingredients'));
+        return view(
+            'recipe.categories',
+            compact('TopRecettes', 'Recettes', 'Ingredients')
+        );
     }
-
-
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -71,32 +60,33 @@ class RecetteController extends Controller
         return view('recipe.create');
     }
 
-
     protected function validator(Request $request)
     {
         return Validator::make($request, [
-
-
-
-            "main_image" => ['required', 'mimes:png,jpg,svg,jpeg,webp', 'max:255', 'unique:users'],
-            "title" => ['required', 'string', 'max:255'],
-            "categorie" =>  ['required', 'string', 'max:255'],
-            "summary" => ['required', 'text'],
-            "tag" => ['required', 'string', 'max:40'],
-            "video" => ['required', 'string', 'max:255'],
-            "ingredient" => ['required', 'text'],
-            "quantite" => ['required', 'integer'],
-            "description" =>  ['required', 'text'],
-            "temps_repos" => ['required', 'integer'],
-            "temps_preparation" => ['required', 'integer'],
-            "temps_cuisson" => ['required', 'integer'],
-            "calories" => ['required', 'integer'],
-            "carbohydrates" => ['required', 'integer'],
-            "gras" => ['required', 'integer'],
-            "potreines" => ['required', 'integer'],
-            "cholesterole" => ['required', 'integer'],
-            "difficulte" => ['required', 'integer'],
-            "budget" => ['required', 'integer'],
+            'main_image' => [
+                'required',
+                'mimes:png,jpg,svg,jpeg,webp',
+                'max:255',
+                'unique:users',
+            ],
+            'title' => ['required', 'string', 'max:255'],
+            'categorie' => ['required', 'string', 'max:255'],
+            'summary' => ['required', 'text'],
+            'tag' => ['required', 'string', 'max:40'],
+            'video' => ['required', 'string', 'max:255'],
+            'ingredient' => ['required', 'text'],
+            'quantite' => ['required', 'integer'],
+            'description' => ['required', 'text'],
+            'temps_repos' => ['required', 'integer'],
+            'temps_preparation' => ['required', 'integer'],
+            'temps_cuisson' => ['required', 'integer'],
+            'calories' => ['required', 'integer'],
+            'carbohydrates' => ['required', 'integer'],
+            'gras' => ['required', 'integer'],
+            'potreines' => ['required', 'integer'],
+            'cholesterole' => ['required', 'integer'],
+            'difficulte' => ['required', 'integer'],
+            'budget' => ['required', 'integer'],
         ]);
     }
 
@@ -108,34 +98,39 @@ class RecetteController extends Controller
      */
     public function store(Request $request)
     {
-
-        dd($request);
+        $identifer = time() . rand(112152, 4232323234);
+        $lastVale = intval($identifer);
 
         Recette::create([
-
-            "main_image" => $request->main_image->store('recettes', 'public'),
-            "title" => $request->title,
-            "categorie" =>  $request->categorie,
-            "summary" => $request->summary,
-            "tag" => $request->tag,
-            "video" => $request->video,
-            "ingredient" => $request->ingredient,
-            "quantite" => $request->quantite,
-            "description" =>  $request->description,
-            "temps_repos" => $request->temps_repos,
-            "temps_preparation" => $request->temps_preparation,
-            "temps_cuisson" => $request->temps_cuisson,
-            "calories" => $request->calories,
-            "carbohydrates" => $request->carbohydrates,
-            "gras" => $request->gras,
-            "potreines" => $request->potreines,
-            "cholesterole" =>  $request->cholesterole,
-            "difficulte" => $request->difficulte,
-            "budget" => $request->budget,
-            "user_id" =>  Auth::user()->id,
-            "categorie_id" =>  $request->categorie,
-
+            'main_image' => $request->main_image->store('recettes', 'public'),
+            'title' => $request->title,
+            'categorie' => $request->categorie,
+            'summary' => $request->summary,
+            'tag' => $request->tag,
+            'video' => $request->video,
+            'description' => $request->description,
+            'temps_repos' => $request->temps_repos,
+            'temps_preparation' => $request->temps_preparation,
+            'temps_cuisson' => $request->temps_cuisson,
+            'calories' => $request->calories,
+            'carbohydrates' => $request->carbohydrates,
+            'gras' => $request->gras,
+            'potreines' => $request->potreines,
+            'cholesterole' => $request->cholesterole,
+            'difficulte' => $request->difficulte,
+            'budget' => $request->budget,
+            'user_id' => Auth::user()->id,
+            'key' => $lastVale,
         ]);
+
+        $ingre = new Ingredient();
+        for ($a = 0; $a < count($request->quantite); $a++) {
+            $ingre->create([
+                'ingredient' => $request->ingredient[$a],
+                'quantite' => $request->quantite[$a],
+                'key' => $lastVale,
+            ]);
+        }
 
         return redirect('/');
     }
@@ -148,7 +143,6 @@ class RecetteController extends Controller
      */
     public function show($id)
     {
-
         $recette = Recette::findOrFail($id);
 
         return view('recipe.show', compact('recette'));
@@ -178,31 +172,34 @@ class RecetteController extends Controller
     {
         $recette = Recette::find($id);
 
-
         dd($recette);
 
-        $recette =   User::where("id", $id)->update([
-
-            "main_image" => $request->main_image->store('recettes', 'public'),
-            "title" => $request->title,
-            "categorie" =>  $request->categorie,
-            "summary" => $request->summary,
-            "tag" => $request->tag,
-            "video" => $request->video,
-            "ingredient" => $request->ingredient,
-            "quantite" => $request->quantite,
-            "description" =>  $request->description,
-            "temps_repos" => $request->temps_repos,
-            "temps_preparation" => $request->temps_preparation,
-            "temps_cuisson" => $request->temps_cuisson,
-            "calories" => $request->calories,
-            "carbohydrates" => $request->carbohydrates,
-            "gras" => $request->gras,
-            "potreines" => $request->potreines,
-            "cholesterole" =>  $request->cholesterole,
-            "difficulte" => $request->difficulte,
-            "budget" => $request->budget,
-        ])->save();
+        $recette = User::where('id', $id)
+            ->update([
+                'main_image' => $request->main_image->store(
+                    'recettes',
+                    'public'
+                ),
+                'title' => $request->title,
+                'categorie' => $request->categorie,
+                'summary' => $request->summary,
+                'tag' => $request->tag,
+                'video' => $request->video,
+                'ingredient' => $request->ingredient,
+                'quantite' => $request->quantite,
+                'description' => $request->description,
+                'temps_repos' => $request->temps_repos,
+                'temps_preparation' => $request->temps_preparation,
+                'temps_cuisson' => $request->temps_cuisson,
+                'calories' => $request->calories,
+                'carbohydrates' => $request->carbohydrates,
+                'gras' => $request->gras,
+                'potreines' => $request->potreines,
+                'cholesterole' => $request->cholesterole,
+                'difficulte' => $request->difficulte,
+                'budget' => $request->budget,
+            ])
+            ->save();
 
         return view(url('Recette/details/' . $recette->id));
     }
@@ -215,14 +212,12 @@ class RecetteController extends Controller
      */
     public function destroy($id)
     {
-
-
-
         $Recette = Recette::find($id);
         $Recette->delete();
-        return redirect()->route('pageAccueil')->with('message', 'la recette a été supprimée avec succès 😥');
+        return redirect()
+            ->route('pageAccueil')
+            ->with('message', 'la recette a été supprimée avec succès 😥');
     }
-
 
     public function likeRecette($id)
     {
@@ -230,7 +225,9 @@ class RecetteController extends Controller
         $recette->like();
         $recette->save();
 
-        return redirect()->route('pageAccueil')->with('message', 'Vous avez liké la recette!');
+        return redirect()
+            ->route('pageAccueil')
+            ->with('message', 'Vous avez liké la recette!');
     }
 
     public function unlikeRecette($id)
@@ -239,6 +236,8 @@ class RecetteController extends Controller
         $recette->unlike();
         $recette->save();
 
-        return redirect()->route('pageAccueil')->with('message', 'Vous avez disliké la recette!');
+        return redirect()
+            ->route('pageAccueil')
+            ->with('message', 'Vous avez disliké la recette!');
     }
 }

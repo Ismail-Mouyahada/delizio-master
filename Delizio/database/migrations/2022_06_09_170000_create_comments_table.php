@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStepsTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,17 @@ class CreateStepsTable extends Migration
      */
     public function up()
     {
-        Schema::create('steps', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('step_title');
-            $table->text('step_details');
+            $table->text('commentaire');
+
+            $table
+                ->foreignId('user_id')
+                ->nullable()
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
             $table
                 ->foreignId('recette_id')
                 ->nullable()
@@ -24,6 +31,7 @@ class CreateStepsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->index('recette_id');
+
             $table->timestamps();
         });
     }
@@ -35,6 +43,6 @@ class CreateStepsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('steps');
+        Schema::dropIfExists('comments');
     }
 }

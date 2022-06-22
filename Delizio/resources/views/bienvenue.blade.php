@@ -88,7 +88,7 @@
                     </div>
                 </div>
 
-            </div> 
+            </div>
         </div>
     </div>
     <!-- List Recipes -->
@@ -105,9 +105,10 @@
                             <div class="by"><i class="fa fa-user" aria-hidden="true"></i> Ismail Mouyahada </div>
 
                             <a href="{{ url('recette/details/' . $recette->id) }}">
-                                {{-- <img class="image-medium" src="{{ $recette->main_image }}" alt="recette-{{ $recette->tag }}"> --}}
-                                <img class="image-medium" src="{{ Storage::url($recette->main_image) }}"
+                                <img class="image-medium" src="{{ $recette->main_image }}"
                                     alt="recette-{{ $recette->tag }}">
+                                {{-- <img class="image-medium" src="{{ Storage::url($recette->main_image) }}" --}}
+                                {{-- alt="recette-{{ $recette->tag }}"> --}}
                             </a>
 
                             <h2>

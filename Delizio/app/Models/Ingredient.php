@@ -10,8 +10,8 @@ class Ingredient extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ingredient','quantite'];
-    
+    protected $fillable = ['ingredient','quantite','key'];
+
     /**
      * Get the user that owns the Ingredient
      *
